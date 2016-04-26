@@ -1,12 +1,11 @@
-# Created by .ignore support plugin (hsz.mobi)
+/index.bck.html
+/assets/css/*.css
+
 node_modules/
 bower_components/
 *.log
 
 # IntelliJ project files
 .idea
-*.iml
 out
-/index.bck.html
-/assets/css/*.css
 gen
