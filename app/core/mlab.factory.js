@@ -9,7 +9,7 @@
     function MLabDataservice($http, $q, exception, logger) {
         //TODO: Move these to a config file
         var basePath = 'https://api.mlab.com/api/1/databases/ffp/',
-            apiKey = 'sR0pFh8gOD59B8ld8ygL7Yyj8SWK767C',
+            apiKey = '',
             collection = 'Series';
 
 
