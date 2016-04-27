@@ -7,31 +7,35 @@
     translate.$inject = ['$translateProvider'];
     function translate($translateProvider) {
         var en = {
-                'GLOBAL': {
-                    'APP_NAME': "FFP Series Tracker"
+                "GLOBAL": {
+                    "APP_NAME": "FFP Series Tracker"
                 },
-                'DASHBOARD': {
-                    'WIDGET_1': {
-                        'TITLE': 'Resumen',
-                        'THEAD': [
-                            'Concepto', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-                        ],
-                        'TFOOT': [ 'Totales:' ]
+                "DASHBOARD": {
+                    "TABLE": {
+                        "HEADERS": {
+                            "ORDER": "#",
+                            "POSTER": "Poster",
+                            "TITLE": "Title",
+                            "SEASON": "Season",
+                            "EPISODE": "Episode",
+                            "LINK": "Watch"
+                        }
                     },
-                    'WIDGET_2': {
-                        'TITLE': 'Nuevo'
+                    "TYPEAHEAD": {
+                        "MATCH": {
+                            "YEAR": "Year: "
+                        }
                     }
                 }
             },
             es = {
-                'GLOBAL': {
-                    'APP_NAME': en.GLOBAL.APP_NAME
+                "GLOBAL": {
+                    "APP_NAME": en.GLOBAL.APP_NAME
                 }
             };
 
         $translateProvider.translations('en', en);
-        $translateProvider.translations('es', es);
+        // $translateProvider.translations('es', es);
         $translateProvider.preferredLanguage('en');
     }
 })();

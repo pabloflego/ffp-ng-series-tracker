@@ -1,6 +1,36 @@
 ﻿<section id="dashboard-view" class="mainbar">
     <section class="matter">
         <div class="container">
+            <!-- Search -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget wlightblue">
+                        <div data-cc-widget-header title="{{ 'DASHBOARD.WIDGET_2.TITLE' | translate }}"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            {{vm.selected}}
+                            <input type="text" ng-model="vm.ta.selected" placeholder="Search"
+                                   uib-typeahead="item.Title for item in vm.searchMatcher($viewValue)"
+                                   typeahead-loading="XXXXXXXXXXXXXXXXXXXXXXXXX"
+                                   typeahead-no-results="noResults"
+                                   typeahead-min-length="2"
+                                   typeahead-template-url="app/core/partials/_typeahead-list-match.html"
+                                   typeahead-on-select="vm.listSelectCallback($item)"
+                                   class="form-control">
+                            <button type="button" class="btn btn-primary" data-ng-click="vm.addSeries()">Add</button>
+                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                            <div ng-show="noResults">
+                                <i class="glyphicon glyphicon-remove"></i> XXXXXXXXXXXXXXXXXXXXXXXXX
+                            </div>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wblue">
@@ -9,11 +39,27 @@
                         <div class="widget-content text-center text-info">
                             <table id="series" class="table table-striped">
                                 <thead>
-                                <tr>
-                                    <th>#</th><th>Name</th><th>Season</th><th>Episode</th><th>Link</th>
-                                </tr>
+                                    <tr>
+                                        <th data-ng-repeat="header in vm.table.headers">{{ header | translate}}</th>
+                                    </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+                                    <tr data-series-id="<%= _id.$oid %>" data-ng-repeat="s in vm.table.series">
+                                        <td>{{ $index + 1 }}</td>
+                                        <td><img ng-src="{{s.omdb.Poster}}" class="poster-thumbnail"></td>
+                                        <td>{{ s.omdb.Title }}</td>
+                                        <td>
+                                            <a href="#" class="glyphicon glyphicon-minus-sign season-decrement"></a>
+                                            {{ s.season }}
+                                            <a href="#" class="glyphicon glyphicon-plus-sign season-increment"></a>
+                                        </td>
+                                        <td>{{ s.episode }}</td>
+                                        <td>
+                                            <a data-ng-href="{{ s.link }}" class="glyphicon glyphicon-play"
+                                               target="_blank"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div class="widget-foot">

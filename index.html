@@ -18,22 +18,10 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+        <!-- TODO: Review these stylesheets -->
         <link rel="stylesheet" href="assets/css/lib/customtheme.css">
         <link rel="stylesheet" href="assets/css/lib/styles.css">
         <link rel="stylesheet" href="assets/css/main.css">
-
-        <script type="text/html" id="row-template">
-            <tr data-series-id="<%= _id.$oid %>">
-                <td><%= index %></td>
-                <td><%= name %></td>
-                <td>
-                    <a href="#" class="glyphicon glyphicon-minus-sign season-decrement"></a>
-                    <%= season %>
-                    <a href="#" class="glyphicon glyphicon-plus-sign season-increment"></a></td>
-                <td><%= episode %></td>
-                <td><a href="<%= link %>" class="glyphicon glyphicon-play" target="_blank"></a></td>
-            </tr>
-        </script>
 
     </head>
     <body>
@@ -64,6 +52,7 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/extras.angular.plus/ngplus-overlay.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
     <!-- Bootstrapping -->
     <script src="app/app.module.js"></script>
@@ -85,6 +74,8 @@
     <script src="app/core/constants.js"></script>
     <script src="app/core/config.js"></script>
     <script src="app/core/i18n.config.js"></script>
+    <script src="app/core/mlab.factory.js"></script>
+    <script src="app/core/omdb.factory.js"></script>
     <script src="app/core/dataservice.js"></script>
 
     <!-- layout -->
