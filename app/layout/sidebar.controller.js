@@ -6,7 +6,6 @@
         .controller('Sidebar', Sidebar);
 
     Sidebar.$inject = ['$route', 'routehelper'];
-
     function Sidebar($route, routehelper) {
         /*jshint validthis: true */
         var vm = this;

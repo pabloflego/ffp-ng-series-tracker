@@ -1,5 +1,6 @@
 /index.bck.html
 /assets/css/*.css
+!/assets/css/lib/
 
 node_modules/
 bower_components/

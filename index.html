@@ -8,9 +8,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+        <style>
+            /* This helps the ng-show/ng-hide animations start at the right place. */
+            /* Since Angular has this but needs to load, this gives us the class early. */
+            .ng-hide {
+                display: none!important;
+            }
+        </style>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+        <link rel="stylesheet" href="assets/css/lib/customtheme.css">
+        <link rel="stylesheet" href="assets/css/lib/styles.css">
         <link rel="stylesheet" href="assets/css/main.css">
 
         <script type="text/html" id="row-template">
@@ -34,7 +43,7 @@
         <div id="splash-page" data-ng-show="false">
             <div class="page-splash">
                 <div class="page-splash-message">
-                    FFP Angular Finances
+                    FFP Series Tracker
                 </div>
                 <div class="progress progress-striped active page-progress-bar">
                     <div class="bar"></div>
@@ -56,11 +65,45 @@
     <script src="bower_components/extras.angular.plus/ngplus-overlay.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
 
-    <!-- App -->
+    <!-- Bootstrapping -->
     <script src="app/app.module.js"></script>
-    <!-- Module: Layout -->
+
+    <!-- Reusable Blocks/Modules -->
+    <script src="app/blocks/exception/exception.module.js"></script>
+    <script src="app/blocks/exception/exception-handler.provider.js"></script>
+    <script src="app/blocks/exception/exception.js"></script>
+    <script src="app/blocks/logger/logger.module.js"></script>
+    <script src="app/blocks/logger/logger.js"></script>
+    <script src="app/blocks/router/router.module.js"></script>
+    <script src="app/blocks/router/routehelper.js"></script>
+    <script src="app/blocks/vendors/vendors.module.js"></script>
+    <script src="app/blocks/vendors/vendors.js"></script>
+    <script src="app/blocks/filters/range.module.js"></script>
+
+    <!-- core module -->
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/constants.js"></script>
+    <script src="app/core/config.js"></script>
+    <script src="app/core/i18n.config.js"></script>
+    <script src="app/core/dataservice.js"></script>
+
+    <!-- layout -->
     <script src="app/layout/layout.module.js"></script>
-    <script src="app/layout/shell.js"></script>
+    <script src="app/layout/shell.controller.js"></script>
+    <script src="app/layout/sidebar.controller.js"></script>
+    
+    <!--widgets-->
+    <script src="app/widgets/widgets.module.js"></script>
+    <script src="app/widgets/ccSidebar.js"></script>
+    <script src="app/widgets/ccSpinner.js"></script>
+    <script src="app/widgets/ccWidgetClose.js"></script>
+    <script src="app/widgets/ccWidgetHeader.js"></script>
+    <script src="app/widgets/ccWidgetMinimize.js"></script>
+
+    <!-- dashboard -->
+    <script src="app/dashboard/dashboard.module.js"></script>
+    <script src="app/dashboard/config.route.js"></script>
+    <script src="app/dashboard/dashboard.controller.js"></script>
 
 
 

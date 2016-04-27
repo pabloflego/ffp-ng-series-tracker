@@ -7,16 +7,15 @@
          * We could place these under every feature area,
          * but this is easier to maintain.
          */
-        // 'app.core',
-        // 'app.widgets',
+        'app.core',
+        'app.widgets',
 
         /*
          * Feature areas
          */
-
-        'app.layout'
+        'app.layout',
+        'app.dashboard'
         // 'app.avengers',
-        // 'app.dashboard',
     ]);
 
 })();
