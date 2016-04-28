@@ -1,7 +1,5 @@
 (function() {
     'use strict';
 
-    angular.module('app.dashboard', [
-        'ui.bootstrap'
-    ]);
+    angular.module('app.dashboard', []);
 })();
