@@ -1,4 +1,3 @@
-window.global = [];
 (function() {
     'use strict';
 
@@ -6,8 +5,15 @@ window.global = [];
         .module('app.dashboard')
         .controller('Dashboard', Dashboard);
 
-    Dashboard.$inject = ['$q', 'dataservice', 'logger', '$filter'];
-    function Dashboard($q, dataservice, logger, $filter) {
+    Dashboard.$inject = ['$q', 'logger', 'dataservice'];
+    /**
+     * Dashboard Controller Constructor
+     * @param $q
+     * @param logger
+     * @param dataservice
+     * @constructor
+     */
+    function Dashboard($q, logger, dataservice) {
 
         /*jshint validthis: true */
         var vm = this;
@@ -32,27 +38,41 @@ window.global = [];
             },
             selected: null
         };
-        vm.searchMatcher = searchMatcher;
-        vm.listSelectCallback = listSelectCallback;
         vm.addSeries = addSeries;
+        vm.listSelectCallback = listSelectCallback;
+        vm.searchMatcher = searchMatcher;
 
         init();
 
+        /**
+         * Initialize Controller
+         * @returns {*}
+         */
         function init() {
-            var promises = [getSeries()];
+            var promises = [_getSeries()];
 
             return $q.all(promises).then(function() {
                 logger.info('Activated Dashboard View');
             });
         }
 
-        function getSeries() {
+        /**
+         * Fetches the list of series
+         * @private
+         * @returns {Object} Promise
+         */
+        function _getSeries() {
             return dataservice.mlab.all()
                 .then(function(response) {
                     return vm.table.series = response.data;
                 });
         }
 
+        /**
+         * Typeahead matcher function to search using omdb api
+         * @param term
+         * @returns {Object} Promise
+         */
         function searchMatcher(term) {
             return dataservice.omdb.search(term)
                 .then(function(response) {
@@ -65,11 +85,18 @@ window.global = [];
                 });
         }
 
+        /**
+         * Executed upon selecting an element in the typeahead list
+         * @param item
+         */
         function listSelectCallback(item) {
             vm.ta.model.omdb = item;
 
         }
 
+        /**
+         * Saves the selection
+         */
         function addSeries() {
             dataservice.mlab.save([vm.ta.model])
                 .then(init);
