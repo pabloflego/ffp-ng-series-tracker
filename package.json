@@ -1,7 +1,12 @@
 {
   "name": "ffp-ng-series-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple app to kepp track of the series you watch",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pabloflego/ffp-ng-series-tracker"
+  },
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
