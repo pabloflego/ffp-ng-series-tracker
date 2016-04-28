@@ -26,6 +26,7 @@
     "angular-animate": "~1.5.5",
     "angular-sanitize": "~1.5.5",
     "font-awesome": "~4.6.1",
-    "extras.angular.plus": "~0.9.3"
+    "extras.angular.plus": "~0.9.3",
+    "angular-translate-loader-static-files": "~2.11.0"
   }
 }

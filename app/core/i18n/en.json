@@ -1,0 +1,22 @@
+{
+  "GLOBAL": {
+    "APP_NAME": "FFP Series Tracker"
+  },
+  "DASHBOARD": {
+    "TABLE": {
+      "HEADERS": {
+        "ORDER": "#",
+        "POSTER": "Poster",
+        "TITLE": "Title",
+        "SEASON": "Season",
+        "EPISODE": "Episode",
+        "LINK": "Watch"
+      }
+    },
+    "TYPEAHEAD": {
+      "MATCH": {
+        "YEAR": "Year: "
+      }
+    }
+  }
+}
