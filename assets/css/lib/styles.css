@@ -512,9 +512,9 @@ a {
         clear: none;
     }
 
-        .nav-collapse .nav > li {
-            float: left;
-        }
+    .nav-collapse .nav > li {
+        float: left;
+    }
 
     .navbar .btn-navbar {
         display: none;

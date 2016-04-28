@@ -15,7 +15,6 @@
          */
         'app.layout',
         'app.dashboard'
-        // 'app.avengers',
     ]);
 
 })();
