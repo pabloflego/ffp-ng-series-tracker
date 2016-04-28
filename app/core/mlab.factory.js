@@ -29,6 +29,7 @@
          */
         function all() {
             var path = basePath + 'collections/' + collection;
+            console.log(path);
             return $http.get(path, {
                 'params': {'apiKey': apiKey},
                 'headers': {'Content-Type': 'application/json'}
