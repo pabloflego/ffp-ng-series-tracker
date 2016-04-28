@@ -17,6 +17,6 @@
         /*
          * 3rd Party modules
          */
-        'ngplus', 'pascalprecht.translate'
+        'ngplus', 'pascalprecht.translate', 'LocalStorageModule'
     ]);
 })();

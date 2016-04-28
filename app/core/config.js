@@ -18,8 +18,14 @@
         toastr.options.positionClass = 'toast-bottom-right';
     }
 
-    configure.$inject = ['$logProvider', '$routeProvider', 'routehelperConfigProvider', 'exceptionHandlerProvider'];
-    function configure ($logProvider, $routeProvider, routehelperConfigProvider, exceptionHandlerProvider) {
+    configure.$inject = ['$logProvider', '$routeProvider', 'routehelperConfigProvider', 'exceptionHandlerProvider',
+        'localStorageServiceProvider'];
+    function configure ($logProvider, $routeProvider, routehelperConfigProvider, exceptionHandlerProvider,
+                        localStorageServiceProvider
+    ) {
+        // Setup localStorage provider
+        localStorageServiceProvider.setPrefix('ffpSeriesTracker');
+
         // turn debugging off/on (no info or warn)
         if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);

@@ -3,15 +3,20 @@
 
     angular
         .module('app.core')
-        .factory('mlab', MLabDataservice);
+        .factory('mlab', MLabDataStore);
 
-    MLabDataservice.$inject = ['$http', '$q', 'exception', 'logger'];
-    function MLabDataservice($http, $q, exception, logger) {
-        //TODO: Move these to a config file
-        var basePath = 'https://api.mlab.com/api/1/databases/ffp/',
-            apiKey = '',
-            collection = 'Series';
-
+    MLabDataStore.$inject = ['$http', 'localStorageService'];
+    /**
+     * Constructor for mLab Mongo DataStore
+     * @param $http
+     * @param localStorageService
+     * @returns {{all: all, save: save}}
+     * @constructor
+     */
+    function MLabDataStore($http, localStorageService) {
+        var basePath    = localStorageService.get('basePath'),
+            apiKey      = localStorageService.get('apiKey'),
+            collection  = localStorageService.get('collection');
 
         return {
             all: all,
