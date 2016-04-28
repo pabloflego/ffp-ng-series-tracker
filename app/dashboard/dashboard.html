@@ -5,22 +5,25 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wlightblue">
-                        <div data-cc-widget-header title="{{ 'DASHBOARD.WIDGET_2.TITLE' | translate }}"
+                        <div data-cc-widget-header title="{{ 'DASHBOARD.WIDGET_1.TITLE' | translate }}"
                              allow-collapse="true"></div>
                         <div class="widget-content text-center text-info">
                             {{vm.selected}}
                             <input type="text" ng-model="vm.ta.selected" placeholder="Search"
                                    uib-typeahead="item.Title for item in vm.searchMatcher($viewValue)"
-                                   typeahead-loading="XXXXXXXXXXXXXXXXXXXXXXXXX"
+                                   typeahead-loading=""
                                    typeahead-no-results="noResults"
                                    typeahead-min-length="2"
                                    typeahead-template-url="app/core/partials/_typeahead-list-match.html"
                                    typeahead-on-select="vm.listSelectCallback($item)"
                                    class="form-control">
-                            <button type="button" class="btn btn-primary" data-ng-click="vm.addSeries()">Add</button>
+                            <button type="button" class="btn btn-primary" data-ng-click="vm.addSeries()" translate>
+                                DASHBOARD.WIDGET_2.TYPEAHEAD.BUTTON_ADD
+                            </button>
                             <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                             <div ng-show="noResults">
-                                <i class="glyphicon glyphicon-remove"></i> XXXXXXXXXXXXXXXXXXXXXXXXX
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <translate>DASHBOARD.WIDGET_2.TYPEAHEAD.NO_RESULTS</translate>
                             </div>
                         </div>
                         <div class="widget-foot">
@@ -34,13 +37,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wblue">
-                        <div data-cc-widget-header title="{{ 'DASHBOARD.WIDGET_1.TITLE' | translate }}"
+                        <div data-cc-widget-header title="{{ 'DASHBOARD.WIDGET_2.TITLE' | translate }}"
                              allow-collapse="true"></div>
                         <div class="widget-content text-center text-info">
                             <table id="series" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th data-ng-repeat="header in vm.table.headers">{{ header | translate}}</th>
+                                        <th data-ng-repeat="header in vm.table.headers" translate>{{ header }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

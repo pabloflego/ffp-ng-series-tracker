@@ -14,12 +14,12 @@ window.global = [];
 
         vm.table = {
             headers: [
-                'DASHBOARD.TABLE.HEADERS.ORDER',
-                'DASHBOARD.TABLE.HEADERS.POSTER',
-                'DASHBOARD.TABLE.HEADERS.TITLE',
-                'DASHBOARD.TABLE.HEADERS.SEASON',
-                'DASHBOARD.TABLE.HEADERS.EPISODE',
-                'DASHBOARD.TABLE.HEADERS.LINK'
+                'DASHBOARD.WIDGET_2.TABLE.HEADERS.ORDER',
+                'DASHBOARD.WIDGET_2.TABLE.HEADERS.POSTER',
+                'DASHBOARD.WIDGET_2.TABLE.HEADERS.TITLE',
+                'DASHBOARD.WIDGET_2.TABLE.HEADERS.SEASON',
+                'DASHBOARD.WIDGET_2.TABLE.HEADERS.EPISODE',
+                'DASHBOARD.WIDGET_2.TABLE.HEADERS.LINK'
             ],
             series: []
         };

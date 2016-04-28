@@ -3,19 +3,28 @@
     "APP_NAME": "FFP Series Tracker"
   },
   "DASHBOARD": {
-    "TABLE": {
-      "HEADERS": {
-        "ORDER": "#",
-        "POSTER": "Poster",
-        "TITLE": "Title",
-        "SEASON": "Season",
-        "EPISODE": "Episode",
-        "LINK": "Watch"
-      }
+    "WIDGET_1": {
+      "TITLE": "Search and Add"
     },
-    "TYPEAHEAD": {
-      "MATCH": {
-        "YEAR": "Year: "
+    "WIDGET_2": {
+      "TITLE": "Series List",
+      "TABLE": {
+        "HEADERS": {
+          "ORDER": "#",
+          "POSTER": "Poster",
+          "TITLE": "Title",
+          "SEASON": "Season",
+          "EPISODE": "Episode",
+          "LINK": "Watch"
+        }
+      },
+      "TYPEAHEAD": {
+        "MATCH": {
+          "YEAR": "Year: "
+        },
+        "LOADING": "Loading...",
+        "NO_RESULTS": "NO results found.",
+        "BUTTON_ADD": "Add"
       }
     }
   }
