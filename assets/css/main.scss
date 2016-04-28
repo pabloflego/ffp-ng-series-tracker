@@ -21,3 +21,15 @@ body {
         }
     }
 }
+
+#options-view {
+    .config-form {
+        input {
+            width: 100%;
+            max-width: none;
+        }
+        .save-button {
+            float: right;
+        }
+    }
+}

@@ -27,5 +27,17 @@
         "BUTTON_ADD": "Add"
       }
     }
+  },
+  "OPTIONS": {
+    "SECTIONS": {
+      "OMDB": {
+        "HEADING": "OMDB API",
+        "COPY": "Define mLab Mongo database configurations.",
+        "BASE_PATH": "Base Path",
+        "API_KEY": "API Key",
+        "COLLECTION": "Collection"
+      }
+    },
+    "SAVE_BUTTON": "Save Options"
   }
 }

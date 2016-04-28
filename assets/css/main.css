@@ -10,3 +10,9 @@ body {
   display: inline-block; }
 #dashboard-view a.ta-match .ta-year {
   font-style: italic; }
+
+#options-view .config-form input {
+  width: 100%;
+  max-width: none; }
+#options-view .config-form .save-button {
+  float: right; }
