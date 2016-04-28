@@ -6,8 +6,7 @@
 
     translate.$inject = ['$translateProvider'];
     function translate($translateProvider) {
-        //TODO: Move these to a language file
-
+        // Load translation files
         $translateProvider.useStaticFilesLoader({
             prefix: 'app/core/i18n/',
             suffix: '.json'
