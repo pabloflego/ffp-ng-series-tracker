@@ -43,15 +43,12 @@ window.global = [];
 
             return $q.all(promises).then(function() {
                 logger.info('Activated Dashboard View');
-
-                // console.log(vm.series);
             });
         }
 
         function getSeries() {
             return dataservice.mlab.all()
                 .then(function(response) {
-                    console.log(response.data);
                     return vm.table.series = response.data;
                 });
         }
