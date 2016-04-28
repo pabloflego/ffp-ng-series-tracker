@@ -1,7 +1,9 @@
-/index.bck.html
+# Project Specific
 /assets/css/*.css
 !/assets/css/lib/
+db.config.json
 
+# Vendors
 node_modules/
 bower_components/
 *.log
