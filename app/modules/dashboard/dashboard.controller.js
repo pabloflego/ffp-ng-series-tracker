@@ -33,7 +33,6 @@
                     if (angular.isDefined(model.season)) { this.season = model.season; }
                     if (angular.isDefined(model.episode)) { this.episode = model.episode; }
                     if (angular.isDefined(model.link)) { this.link = model.link; }
-
                 }
             };
 
@@ -131,7 +130,7 @@
                 model: Object.create(modelPrototype),
                 selected: undefined
             };
-            //
+            
             // vm.ta.model.populate(
             //     {omdb:{Title: "Vikings asdasdasdasd", Year: "2013–", imdbID: "tt2306299", Type: "series", Poster: "http://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg"}}
             // );

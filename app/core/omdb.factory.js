@@ -5,11 +5,8 @@
         .module('app.core')
         .factory('omdb', OMDBDataservice);
 
-    OMDBDataservice.$inject = ['$http', '$q', 'exception', 'logger'];
-    function OMDBDataservice($http, $q, exception, logger) {
-        //TODO: Move these to a config file
-        var basePath = 'http://www.omdbapi.com/';
-
+    OMDBDataservice.$inject = ['$http', 'config'];
+    function OMDBDataservice($http, config) {
 
         return {
             search: search,
@@ -18,7 +15,7 @@
 
         function search(term) {
 
-            return $http.get(basePath, {
+            return $http.get(config.omdb.basePath, {
                 'params': {
                     's': term,
                     'r': 'json',
@@ -31,7 +28,7 @@
 
         function one(imdbId) {
 
-            return $http.get(basePath, {
+            return $http.get(config.omdb.basePath, {
                 'params': {
                     'i': imdbId,
                     'r': 'json',

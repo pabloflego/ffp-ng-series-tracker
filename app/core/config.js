@@ -1,11 +1,13 @@
 (function() {
     'use strict';
 
+    //TODO: Move these to it's own file
     var config = {
         appErrorPrefix: '[FFP Error] ', //Configure the exceptionHandler decorator
         appTitle: 'FFP Series Tracker',
         version: '1.0.0',
-        imdbUrl: 'http://www.imdb.com/title/'
+        imdbUrl: 'http://www.imdb.com/title/',
+        omdb: { basePath: 'http://www.omdbapi.com/' }
     };
 
     angular.module('app.core')
