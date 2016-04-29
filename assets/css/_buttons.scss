@@ -42,8 +42,7 @@
     }
   }
 
-  &[disabled],
-  &[disabled]:hover  {
+  &[disabled], &[disabled]:hover  {
     background: $disabled-gray;
     border-color: $disabled-gray;
   }

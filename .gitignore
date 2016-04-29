@@ -1,6 +1,5 @@
 # Project Specific
-/assets/css/*.css
-!/assets/css/lib/
+/assets/css/*.css*
 
 # Vendors
 node_modules/
