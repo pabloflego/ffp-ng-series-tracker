@@ -4,7 +4,8 @@
     var config = {
         appErrorPrefix: '[FFP Error] ', //Configure the exceptionHandler decorator
         appTitle: 'FFP Series Tracker',
-        version: '1.0.0'
+        version: '1.0.0',
+        imdbUrl: 'http://www.imdb.com/title/'
     };
 
     angular.module('app.core')
@@ -34,15 +35,15 @@
         // Configure the common route provider
         routehelperConfigProvider.config.$routeProvider = $routeProvider;
         routehelperConfigProvider.config.docTitle = 'FFP Series Tracker: ';
-        var resolveAlways = { /* @ngInject */
+        routehelperConfigProvider.config.resolveAlways = {
+            /* @ngInject */
             // ready: function(dataservice) {
             //     return dataservice.ready();
             // }
             ready: ['dataservice', function (dataservice) {
-               return dataservice.ready();
+                return dataservice.ready();
             }]
         };
-        routehelperConfigProvider.config.resolveAlways = resolveAlways;
 
         // Configure the common exception handler
         exceptionHandlerProvider.configure(config.appErrorPrefix);

@@ -1,0 +1,43 @@
+/* Button colors */
+
+.btn {
+  &.btn-primary {
+    background: #1171a3 !important;
+
+    &:hover {
+      background: #0f608b !important;
+    }
+  }
+
+  &.btn-info {
+    background: #52b9e9 !important;
+
+    &:hover {
+      background: #459fc9 !important;
+    }
+  }
+
+  &.btn-success {
+    background: #43c83c !important;
+
+    &:hover {
+      background: #36a530 !important;
+    }
+  }
+
+  &.btn-warning {
+    background: #f88529 !important;
+
+    &:hover {
+      background: #d67323 !important;
+    }
+  }
+
+  &.btn-danger {
+    background: #fa3031 !important;
+
+    &:hover {
+      background: #d82829 !important;
+    }
+  }
+}

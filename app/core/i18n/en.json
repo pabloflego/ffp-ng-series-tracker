@@ -24,7 +24,19 @@
         },
         "LOADING": "Loading...",
         "NO_RESULTS": "NO results found.",
-        "BUTTON_ADD": "Add"
+        "BUTTONS": {
+          "ADD": "Add",
+          "CANCEL": "Cancel"
+        },
+        "SELECTION": {
+          "HEADING": {
+            "SELECTED": "Your Selection",
+            "NONE": "None Selected"
+          },
+          "TITLE": "Title: ",
+          "YEAR": "Year: ",
+          "IMDB_LINK": "View on IMDB"
+        }
       }
     }
   },

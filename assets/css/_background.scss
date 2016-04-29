@@ -1,0 +1,81 @@
+/* Background colors */
+
+.blightblue {
+  background: #52b9e9 !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.bblue {
+  background: #1171a3 !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.bgreen {
+  background: #43c83c !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.borange {
+  background: #f88529 !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.bred {
+  background: #fa3031 !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.bviolet {
+  background: #932ab6 !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.blightblue {
+  h2, h3, h4, h5, h6 {
+    color: #fff !important;
+  }
+}
+
+.bblue {
+  h2, h3, h4, h5, h6 {
+    color: #fff !important;
+  }
+}
+
+.bgreen {
+  h2, h3, h4, h5, h6 {
+    color: #fff !important;
+  }
+}
+
+.bred {
+  h2, h3, h4, h5, h6 {
+    color: #fff !important;
+  }
+}
+
+.bviolet {
+  h2, h3, h4, h5, h6 {
+    color: #fff !important;
+  }
+}
+
+.borange {
+  h2, h3, h4, h5, h6 {
+    color: #fff !important;
+  }
+}
+
+.blightblue a, .bblue a, .bgreen a, .bred a, .borange a, .bviolet a {
+  color: #eee !important;
+}
+
+.blightblue a:hover, .bblue a:hover, .bgreen a:hover, .bred a:hover, .borange a:hover, .bviolet a:hover {
+  color: $light-gray !important;
+}

@@ -1,0 +1,44 @@
+/*
+ * Dashboard Module
+ */
+#dashboard-view {
+  img.poster-thumbnail-64 {
+    width: 64px;
+  }
+  img.poster-thumbnail-128 {
+    width: 128px;
+    padding: 0;
+  }
+
+  #search-box {
+    padding: 0 15px 10px 0;
+
+    ul.dropdown-menu {
+      width: calc(100% - 15px);
+      overflow: hidden;
+      overflow-y: scroll;
+      height: 528px;
+      padding-right: 15px;
+    }
+
+    a.ta-match {
+      .ta-info {
+        display: inline-block;
+      }
+      .ta-year {
+        font-style: italic;
+      }
+    }
+  }
+
+  #selection-box {
+    border: 1px solid $light-gray;
+    min-height: 34px;
+    padding-bottom: 10px;
+
+    .selection-info {
+      min-height: 128px;
+    }
+  }
+
+}

@@ -1,0 +1,42 @@
+/* Form */
+
+form {
+  margin: 10px;
+
+  input, button, textarea, select {
+    font-size: 13px !important;
+  }
+
+  label {
+    font-size: 13px;
+    line-height: 13px;
+  }
+}
+
+.form-inline button {
+  margin-left: 15px;
+}
+
+.form-horizontal {
+  .control-label {
+    width: 90px;
+  }
+
+  .controls {
+    margin-left: 110px;
+
+    &:first-child {
+      *padding-left: 100px;
+    }
+  }
+
+  .form-actions {
+    padding-left: 110px;
+  }
+}
+
+.form-actions {
+  padding: 5px 20px 5px;
+  background: transparent;
+  border-top: 0;
+}

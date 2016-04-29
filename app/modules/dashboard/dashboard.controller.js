@@ -5,7 +5,7 @@
         .module('app.dashboard')
         .controller('Dashboard', Dashboard);
 
-    Dashboard.$inject = ['$q', 'logger', 'dataservice'];
+    Dashboard.$inject = ['$q', 'logger', 'dataservice', 'config'];
     /**
      * Dashboard Controller Constructor
      * @param $q
@@ -13,10 +13,29 @@
      * @param dataservice
      * @constructor
      */
-    function Dashboard($q, logger, dataservice) {
+    function Dashboard($q, logger, dataservice, config) {
 
         /*jshint validthis: true */
-        var vm = this;
+        var vm = this,
+            modelPrototype = {
+                omdb: {
+                    Title: undefined, Year: undefined, imdbID: undefined, Type: undefined, Poster: undefined
+                },
+                season: 0,
+                episode: 0,
+                link: null,
+                getIMDBLink: function () {
+                    return angular.isDefined(this.omdb.imdbID) ?
+                    config.imdbUrl + this.omdb.imdbID : '#';
+                },
+                populate: function(model) {
+                    if (angular.isDefined(model.omdb)) { this.omdb = model.omdb; }
+                    if (angular.isDefined(model.season)) { this.season = model.season; }
+                    if (angular.isDefined(model.episode)) { this.episode = model.episode; }
+                    if (angular.isDefined(model.link)) { this.link = model.link; }
+
+                }
+            };
 
         vm.table = {
             headers: [
@@ -29,16 +48,9 @@
             ],
             series: []
         };
-        vm.ta = {
-            model: {
-                omdb: null,
-                season: 0,
-                episode: 0,
-                link: null
-            },
-            selected: null
-        };
+        vm.ta = {};
         vm.addSeries = addSeries;
+        vm.cancelSelection = cancelSelection;
         vm.listSelectCallback = listSelectCallback;
         vm.searchMatcher = searchMatcher;
 
@@ -49,7 +61,12 @@
          * @returns {*}
          */
         function init() {
-            var promises = [_getSeries()];
+            var promises;
+
+            // Reset Typeahead
+            _resetTypeahead();
+
+            promises = [_getSeries()];
 
             return $q.all(promises).then(function() {
                 logger.info('Activated Dashboard View');
@@ -90,8 +107,7 @@
          * @param item
          */
         function listSelectCallback(item) {
-            vm.ta.model.omdb = item;
-
+            vm.ta.model.populate({omdb: item});
         }
 
         /**
@@ -100,6 +116,26 @@
         function addSeries() {
             dataservice.mlab.save([vm.ta.model])
                 .then(init);
+        }
+
+        function cancelSelection() {
+            _resetTypeahead();
+        }
+
+        /**
+         * Resets to the default values
+         * @private
+         */
+        function _resetTypeahead() {
+            vm.ta = {
+                model: Object.create(modelPrototype),
+                selected: undefined
+            };
+            //
+            // vm.ta.model.populate(
+            //     {omdb:{Title: "Vikings asdasdasdasd", Year: "2013–", imdbID: "tt2306299", Type: "series", Poster: "http://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg"}}
+            // );
+            // vm.ta.selected = "Vikings";
         }
     }
 })();
