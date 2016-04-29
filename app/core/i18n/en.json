@@ -35,7 +35,8 @@
           },
           "TITLE": "Title: ",
           "YEAR": "Year: ",
-          "IMDB_LINK": "View on IMDB"
+          "IMDB_LINK": "(View on IMDB)",
+          "PLOT": "Plot: "
         }
       }
     }

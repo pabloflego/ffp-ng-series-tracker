@@ -5,7 +5,7 @@
         .module('app.dashboard')
         .controller('Dashboard', Dashboard);
 
-    Dashboard.$inject = ['$q', 'logger', 'dataservice', 'config'];
+    Dashboard.$inject = ['$q', 'lodash', 'logger', 'dataservice', 'config'];
     /**
      * Dashboard Controller Constructor
      * @param $q
@@ -13,10 +13,11 @@
      * @param dataservice
      * @constructor
      */
-    function Dashboard($q, logger, dataservice, config) {
+    function Dashboard($q, _, logger, dataservice, config) {
 
         /*jshint validthis: true */
         var vm = this,
+        //TODO: Move this to config?
             modelPrototype = {
                 omdb: {
                     Title: undefined, Year: undefined, imdbID: undefined, Type: undefined, Poster: undefined
@@ -106,7 +107,10 @@
          * @param item
          */
         function listSelectCallback(item) {
-            vm.ta.model.populate({omdb: item});
+            dataservice.omdb.one(item.imdbID)
+                .then(function(response) {
+                    vm.ta.model.populate({omdb: response.data});
+                });
         }
 
         /**
@@ -130,7 +134,7 @@
                 model: Object.create(modelPrototype),
                 selected: undefined
             };
-            
+
             // vm.ta.model.populate(
             //     {omdb:{Title: "Vikings asdasdasdasd", Year: "2013–", imdbID: "tt2306299", Type: "series", Poster: "http://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg"}}
             // );

@@ -39,6 +39,8 @@
                                             {{ vm.ta.model.omdb.Year }}
                                         </div>
                                         <div>
+                                            <translate>DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.PLOT</translate>
+                                            {{ vm.ta.model.omdb.Plot }}
                                             <a data-ng-href="{{ vm.ta.model.getIMDBLink() }}" target="_blank" translate>
                                                 DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.IMDB_LINK
                                             </a>
@@ -50,7 +52,7 @@
                         </div>
                         <div class="widget-foot">
                             <button type="button" class="btn btn-primary btn-lg pull-right col-xs-12 col-lg-3"
-                                    data-ng-click="vm.addseries()" translate>
+                                    data-ng-click="vm.addseries()"  data-ng-disabled="!vm.ta.model.omdb.Title" translate>
                                 DASHBOARD.WIDGET_2.TYPEAHEAD.BUTTONS.ADD</button>
                             <button type="button" class="btn btn-default btn-lg pull-right col-xs-12 col-lg-3"
                                     data-ng-click="vm.cancelSelection()" translate>

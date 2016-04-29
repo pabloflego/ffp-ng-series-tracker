@@ -1,43 +1,50 @@
 /* Button colors */
 
 .btn {
+
   &.btn-primary {
-    background: #1171a3 !important;
+    background: #1171a3;
 
     &:hover {
-      background: #0f608b !important;
+      background: #0f608b;
     }
   }
 
   &.btn-info {
-    background: #52b9e9 !important;
+    background: #52b9e9;
 
     &:hover {
-      background: #459fc9 !important;
+      background: #459fc9;
     }
   }
 
   &.btn-success {
-    background: #43c83c !important;
+    background: #43c83c;
 
     &:hover {
-      background: #36a530 !important;
+      background: #36a530;
     }
   }
 
   &.btn-warning {
-    background: #f88529 !important;
+    background: #f88529;
 
     &:hover {
-      background: #d67323 !important;
+      background: #d67323;
     }
   }
 
   &.btn-danger {
-    background: #fa3031 !important;
+    background: #fa3031;
 
     &:hover {
-      background: #d82829 !important;
+      background: #d82829;
     }
+  }
+
+  &[disabled],
+  &[disabled]:hover  {
+    background: $disabled-gray;
+    border-color: $disabled-gray;
   }
 }
