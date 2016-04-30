@@ -54,6 +54,7 @@
         "FIELDS": ["API Key"]
       }
     },
-    "SAVE_BUTTON": "Save Options"
+    "SAVE_BUTTON": "Save Options",
+    "OPTION_INPUT_PLACEHOLDER": "(empty)"
   }
 }

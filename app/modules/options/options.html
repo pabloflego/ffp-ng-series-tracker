@@ -13,21 +13,23 @@
                             <p translate>{{ vm.getTranslationKey(key, 'COPY') }}</p>
                         </div>
                         <!-- Table -->
-                        <table class="table table-bordered config-form">
+                        <table class="table table-bordered config-table">
                             <tbody>
                                 <tr data-ng-repeat="(field, value) in option">
-                                    <td translate>{{ vm.getTranslationKey(key, 'FIELDS.' + $index) }}</td>
-                                    <td>
-                                        <input type="text" class="form-control"
-                                               data-ng-model="vm.options[key][field]"
-                                               title="{{ vm.getTranslationKey(key, 'FIELDS.' + $index) | translate }}">
+                                    <td class="option-caption col-md-2" translate>
+                                        {{ vm.getTranslationKey(key, 'FIELDS.' + $index) }}
+                                    </td>
+                                    <td class="option-value col-md-10">
+                                        <input type="text" class="form-control" data-ng-model="vm.options[key][field]"
+                                               title="{{ vm.getTranslationKey(key, 'FIELDS.' + $index) | translate }}"
+                                               placeholder="{{ 'OPTIONS.OPTION_INPUT_PLACEHOLDER' | translate}}">
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-lg active save-button"
+                    <button type="button" class="btn btn-primary btn-lg pull-right col-md-4"
                             data-ng-click="vm.save()" translate>OPTIONS.SAVE_BUTTON</button>
                 </div>
             </div>

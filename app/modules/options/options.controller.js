@@ -18,7 +18,17 @@
 
         /*jshint validthis: true */
         var vm = this;
-        vm.options = {};
+        // Provide defaults (Needed to actually show each option)
+        vm.options = {
+            mlab: {
+                apiKey: '',
+                database: '',
+                collection: ''
+            },
+            tmdb: {
+                apiKey: ''
+            }
+        };
 
 
         vm.save = saveOptions;
@@ -42,7 +52,7 @@
          * @returns {Object} Promise
          */
         function getOptions() {
-            return $q.when(vm.options = localStorageService.get('options'));
+            return $q.when(_.assign(vm.options, localStorageService.get('options')));
         }
 
         /**

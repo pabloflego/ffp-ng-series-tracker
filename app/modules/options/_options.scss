@@ -2,13 +2,25 @@
  * Options Module
  */
 #options-view {
-  .config-form {
+  .config-table {
     input {
       width: 100%;
       max-width: none;
     }
-    .save-button {
-      float: right;
+  }
+
+  tbody {
+    td {
+      &.option-caption {
+        text-align: center;
+        padding: 0 10px;
+        vertical-align: middle;
+        font-weight: bold;
+        font-style: italic;
+      }
+      &.option-value {
+
+      }
     }
   }
 }
