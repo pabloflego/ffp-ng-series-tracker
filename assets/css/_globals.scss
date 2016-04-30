@@ -182,3 +182,9 @@ a.btn {
     font-size: 12px;
   }
 }
+
+.panel {
+  &.panel-default {
+    margin-top: 10px;
+  }
+}
