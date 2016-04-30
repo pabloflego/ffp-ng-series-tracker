@@ -14,13 +14,28 @@
 
     angular.module('app.core')
         .config(toastrConfig)
+        .config(flashConfig)
         .value('config', config)
         .config(configure);
 
     toastrConfig.$inject = ['toastr'];
+    /**
+     * Configure Toaster
+     * @param toastr
+     */
     function toastrConfig(toastr) {
         toastr.options.timeOut = 4000;
         toastr.options.positionClass = 'toast-bottom-right';
+    }
+
+    flashConfig.$inject = ['FlashProvider'];
+    /**
+     * Configure Flash Message
+     * @param FlashProvider
+     */
+    function flashConfig(FlashProvider) {
+        // FlashProvider.setTimeout(5000);
+        FlashProvider.setShowClose(true);
     }
 
     configure.$inject = ['$logProvider', '$routeProvider', 'routehelperConfigProvider', 'exceptionHandlerProvider',

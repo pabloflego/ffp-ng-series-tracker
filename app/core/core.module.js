@@ -18,6 +18,6 @@
          * 3rd Party modules
          */
         'ngplus', 'pascalprecht.translate', 'ui.bootstrap', 'LocalStorageModule',
-        'ngLodash'
+        'ngLodash', 'ngFlash'
     ]);
 })();

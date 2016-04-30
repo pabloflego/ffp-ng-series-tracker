@@ -28,6 +28,7 @@
     "font-awesome": "~4.6.1",
     "extras.angular.plus": "~0.9.3",
     "angular-translate-loader-static-files": "~2.11.0",
-    "angular-local-storage": "~0.2.7"
+    "angular-local-storage": "~0.2.7",
+    "angular-flash-alert": "~2.3.0"
   }
 }
