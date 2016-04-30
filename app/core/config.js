@@ -7,7 +7,9 @@
         appTitle: 'FFP Series Tracker',
         version: '1.0.0',
         imdbUrl: 'http://www.imdb.com/title/',
-        omdb: { basePath: 'http://www.omdbapi.com/' }
+        mlab: { baseURI: 'https://api.mlab.com/api/1/' },
+        omdb: { baseURI: 'http://www.omdbapi.com/' },
+        tmdb: { baseURI: 'https://api.themoviedb.org/3/' }
     };
 
     angular.module('app.core')
