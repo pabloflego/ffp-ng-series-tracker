@@ -15,8 +15,9 @@
     angular.module('app.core')
         .config(toastrConfig)
         .config(flashConfig)
+        .config(localStorageConfig)
         .value('config', config)
-        .config(configure);
+        .config(miscConfig);
 
     toastrConfig.$inject = ['toastr'];
     /**
@@ -38,14 +39,25 @@
         FlashProvider.setShowClose(true);
     }
 
-    configure.$inject = ['$logProvider', '$routeProvider', 'routehelperConfigProvider', 'exceptionHandlerProvider',
-        'localStorageServiceProvider'];
-    function configure ($logProvider, $routeProvider, routehelperConfigProvider, exceptionHandlerProvider,
-                        localStorageServiceProvider
-    ) {
+    localStorageConfig.$inject = ['localStorageServiceProvider'];
+    /**
+     * Configure localStorage
+     * @param localStorageProvider
+     */
+    function localStorageConfig(localStorageProvider) {
         // Setup localStorage provider
-        localStorageServiceProvider.setPrefix('ffpSeriesTracker');
+        localStorageProvider.setPrefix('ffpSeriesTracker');
+    }
 
+    miscConfig.$inject = ['$logProvider', '$routeProvider', 'routehelperConfigProvider', 'exceptionHandlerProvider'];
+    /**
+     * Configure Miscellaneous Providers
+     * @param $logProvider
+     * @param $routeProvider
+     * @param routehelperConfigProvider
+     * @param exceptionHandlerProvider
+     */
+    function miscConfig ($logProvider, $routeProvider, routehelperConfigProvider, exceptionHandlerProvider) {
         // turn debugging off/on (no info or warn)
         if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
