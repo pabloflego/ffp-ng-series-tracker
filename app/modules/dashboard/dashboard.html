@@ -10,41 +10,42 @@
 
                         <div class="widget-content text-center text-info">
                             <div id="search-box" class="col-md-6">
-                                    <input type="text" ng-model="vm.ta.selected" placeholder="Search"
-                                           uib-typeahead="item.Title for item in vm.searchMatcher($viewValue)"
-                                           typeahead-loading=""
-                                           typeahead-no-results="noResults"
-                                           typeahead-min-length="2"
-                                           typeahead-template-url="app/core/partials/_typeahead-list-match.html"
-                                           typeahead-on-select="vm.listSelectCallback($item)"
-                                           class="form-control">
-                                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                                    <div ng-show="noResults">
-                                        <i class="glyphicon glyphicon-remove"></i>
-                                        <translate>DASHBOARD.WIDGET_2.TYPEAHEAD.NO_RESULTS</translate>
-                                    </div>
+                                <input type="text" ng-model="vm.ta.selected"
+                                       placeholder="{{ 'DASHBOARD.WIDGET_1.TYPEAHEAD.PLACEHOLDER' | translate }}"
+                                       uib-typeahead="item.name for item in vm.searchMatcher($viewValue)"
+                                       typeahead-no-results="noResults"
+                                       typeahead-min-length="2"
+                                       typeahead-template-url="app/core/partials/_typeahead-list-match.html"
+                                       typeahead-on-select="vm.listSelectCallback($item)"
+                                       class="form-control">
+                                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                <div ng-show="noResults">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    <translate>DASHBOARD.WIDGET_1.TYPEAHEAD.NO_RESULTS</translate>
+                                </div>
                             </div>
                             <div id="selection-box" class="col-md-6">
-                                    <translate data-ng-if="vm.ta.model.omdb.Title">
-                                        DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.HEADING.SELECTED</translate>
-                                    <translate data-ng-if="!vm.ta.model.omdb.Title">
-                                        DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.HEADING.NONE</translate>
-                                <div data-ng-if="vm.ta.model.omdb.Title" class="text-left clearfix">
-                                    <img data-ng-src="{{ vm.ta.model.omdb.Poster }}" alt="{{ vm.ta.model.omdb.Title }}"
+                                    <translate data-ng-if="vm.ta.model.imdb.name">
+                                        DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.HEADING.SELECTED</translate>
+                                    <translate data-ng-if="!vm.ta.model.imdb.name">
+                                        DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.HEADING.NONE</translate>
+                                <div data-ng-if="vm.ta.model.imdb.name" class="text-left clearfix">
+                                    <img data-ng-src="{{ vm.getImagePath('w92', vm.ta.model.imdb.poster_path) }}"
+                                         alt="{{ vm.ta.model.imdb.name }}"
                                          class="poster-thumbnail-128 pull-left col-md-4">
                                     <div class="selection-info pull-left col-md-8">
-                                        <h3>{{ vm.ta.model.omdb.Title }}</h3>
+                                        <h3>{{ vm.ta.model.imdb.name }}</h3>
                                         <div>
-                                            <b><i translate>DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.YEAR</i></b>
-                                            {{ vm.ta.model.omdb.Year }}
+                                            <b><i translate>DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.DATE</i></b>
+                                            {{ vm.ta.model.imdb.first_air_date }}
                                         </div>
                                         <div>
-                                            <b><i translate>DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.PLOT</i></b>
-                                            <span class="text-muted">{{ vm.ta.model.omdb.Plot }}</span>
-                                            <br>
-                                            <a data-ng-href="{{ vm.ta.model.getIMDBLink() }}" target="_blank" translate>
-                                                DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.IMDB_LINK
-                                            </a>
+                                            <b><i translate>DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.PLOT</i></b>
+                                            <span class="text-muted">{{ vm.ta.model.imdb.overview }}</span>
+                                            <!--<br>-->
+                                            <!--<a data-ng-href="{{ vm.ta.model.getIMDBLink() }}" target="_blank" translate>-->
+                                                <!--DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.IMDB_LINK-->
+                                            <!--</a>-->
                                         </div>
                                     </div>
                                 </div>
@@ -53,11 +54,11 @@
                         </div>
                         <div class="widget-foot">
                             <button type="button" class="btn btn-primary btn-lg pull-right col-xs-12 col-lg-3"
-                                    data-ng-click="vm.addseries()"  data-ng-disabled="!vm.ta.model.omdb.Title" translate>
-                                DASHBOARD.WIDGET_2.TYPEAHEAD.BUTTONS.ADD</button>
+                                    data-ng-click="vm.addSeries()"  data-ng-disabled="!vm.ta.model.imdb.name" translate>
+                                DASHBOARD.WIDGET_1.TYPEAHEAD.BUTTONS.ADD</button>
                             <button type="button" class="btn btn-default btn-lg pull-right col-xs-12 col-lg-3"
                                     data-ng-click="vm.cancelSelection()" translate>
-                                DASHBOARD.WIDGET_2.TYPEAHEAD.BUTTONS.CANCEL</button>
+                                DASHBOARD.WIDGET_1.TYPEAHEAD.BUTTONS.CANCEL</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -80,8 +81,11 @@
                                 <tbody>
                                     <tr data-series-id="<%= _id.$oid %>" data-ng-repeat="s in vm.table.series">
                                         <td>{{ $index + 1 }}</td>
-                                        <td><img ng-src="{{s.omdb.Poster}}" class="poster-thumbnail-64"></td>
-                                        <td>{{ s.omdb.Title }}</td>
+                                        <td>
+                                            <img ng-src="{{ vm.getImagePath('w92', s.imdb.poster_path)}}"
+                                                 class="poster-thumbnail-64">
+                                        </td>
+                                        <td>{{ s.imdb.name }}</td>
                                         <td>
                                             <a href="#" class="glyphicon glyphicon-minus-sign season-decrement"></a>
                                             {{ s.season }}

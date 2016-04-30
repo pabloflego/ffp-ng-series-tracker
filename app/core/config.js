@@ -9,7 +9,22 @@
         imdbUrl: 'http://www.imdb.com/title/',
         mlab: { baseURI: 'https://api.mlab.com/api/1/' },
         omdb: { baseURI: 'http://www.omdbapi.com/' },
-        tmdb: { baseURI: 'https://api.themoviedb.org/3/' }
+        tmdb: {
+            baseURI: 'https://api.themoviedb.org/3/',
+            images: {
+                basePath: 'http://image.tmdb.org/t/p/<%= size %><%= posterPath %>?api_key=<%= apiKey %>',
+                sizes: {
+                    '92' :'w92',
+                    '154': 'w154',
+                    '185': 'w185',
+                    '342': 'w342',
+                    '500': 'w500',
+                    '780': 'w780',
+                    original: "original"
+                }
+            }
+        },
+        defaultPoster: 'assets/img/default-poster.png'
     };
 
     angular.module('app.core')

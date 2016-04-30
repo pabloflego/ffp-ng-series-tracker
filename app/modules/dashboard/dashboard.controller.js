@@ -5,35 +5,43 @@
         .module('app.dashboard')
         .controller('Dashboard', Dashboard);
 
-    Dashboard.$inject = ['$q', 'lodash', 'logger', 'dataservice', 'config'];
+    Dashboard.$inject = ['$q', 'lodash', 'logger', 'dataservice', 'config', 'localStorageService'];
     /**
      * Dashboard Controller Constructor
      * @param $q
+     * @param _
      * @param logger
      * @param dataservice
+     * @param config
+     * @param localStorageService
      * @constructor
      */
-    function Dashboard($q, _, logger, dataservice, config) {
+    function Dashboard($q, _, logger, dataservice, config, localStorageService) {
 
         /*jshint validthis: true */
         var vm = this,
+            options = localStorageService.get('options'),
         //TODO: Move this to config?
             modelPrototype = {
-                omdb: {
-                    Title: undefined, Year: undefined, imdbID: undefined, Type: undefined, Poster: undefined
+                imdb: {
+                    id: undefined,
+                    original_name: undefined,
+                    first_air_date: undefined,
+                    poster_path: undefined,
+                    imdbID: undefined
                 },
                 season: 0,
                 episode: 0,
                 link: null,
                 getIMDBLink: function () {
-                    return angular.isDefined(this.omdb.imdbID) ?
-                    config.imdbUrl + this.omdb.imdbID : '#';
+                    return angular.isDefined(this.imdb.imdbID) ?
+                    config.imdbUrl + this.imdb.imdbID : '#';
                 },
                 populate: function(model) {
-                    if (angular.isDefined(model.omdb)) { this.omdb = model.omdb; }
-                    if (angular.isDefined(model.season)) { this.season = model.season; }
-                    if (angular.isDefined(model.episode)) { this.episode = model.episode; }
-                    if (angular.isDefined(model.link)) { this.link = model.link; }
+                    this.imdb = angular.isDefined(model.imdb) ? model.imdb : this.imdb;
+                    this.season = angular.isDefined(model.season) ? model.season : this.season;
+                    this.episode = angular.isDefined(model.episode) ? model.episode : this.episode;
+                    this.link = angular.isDefined(model.link) ? model.link : this.link;
                 }
             };
 
@@ -51,6 +59,7 @@
         vm.ta = {};
         vm.addSeries = addSeries;
         vm.cancelSelection = cancelSelection;
+        vm.getImagePath = getImagePath;
         vm.listSelectCallback = listSelectCallback;
         vm.searchMatcher = searchMatcher;
 
@@ -65,6 +74,7 @@
 
             // Reset Typeahead
             _resetTypeahead();
+            window.d = dataservice;
 
             promises = [_getSeries()];
 
@@ -86,15 +96,16 @@
         }
 
         /**
-         * Typeahead matcher function to search using omdb api
+         * Typeahead matcher function to search using imdb api
          * @param term
          * @returns {Object} Promise
          */
         function searchMatcher(term) {
-            return dataservice.omdb.search(term)
+            return dataservice.imdb.search(term)
                 .then(function(response) {
-                    if (response.data.Response === 'True') {
-                        return response.data.Search.map(function (item) {
+                    var results = response.data.results;
+                    if (results && results.length > 0) {
+                        return results.map(function (item) {
                             return item;
                         });
                     }
@@ -107,10 +118,18 @@
          * @param item
          */
         function listSelectCallback(item) {
-            dataservice.omdb.one(item.imdbID)
+            dataservice.imdb.one(item.id)
                 .then(function(response) {
-                    vm.ta.model.populate({omdb: response.data});
+                    vm.ta.model.populate({imdb: response.data});
                 });
+        }
+
+        /**
+         * Get the image path
+         * @returns {*}
+         */
+        function getImagePath(size, path) {
+            return dataservice.utils.getImagePath(size, path);
         }
 
         /**
@@ -121,6 +140,9 @@
                 .then(init);
         }
 
+        /**
+         * Cancel current selection
+         */
         function cancelSelection() {
             _resetTypeahead();
         }
@@ -136,7 +158,7 @@
             };
 
             // vm.ta.model.populate(
-            //     {omdb:{Title: "Vikings asdasdasdasd", Year: "2013–", imdbID: "tt2306299", Type: "series", Poster: "http://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg"}}
+            //     {imdb:{Title: "Vikings asdasdasdasd", Year: "2013–", imdbID: "tt2306299", Type: "series", Poster: "http://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg"}}
             // );
             // vm.ta.selected = "Vikings";
         }

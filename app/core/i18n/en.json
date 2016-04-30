@@ -4,7 +4,28 @@
   },
   "DASHBOARD": {
     "WIDGET_1": {
-      "TITLE": "Search and Add"
+      "TITLE": "Search and Add",
+      "TYPEAHEAD": {
+        "MATCH": {
+          "DATE": "Date: "
+        },
+        "NO_RESULTS": "NO results found.",
+        "PLACEHOLDER": "Search",
+        "BUTTONS": {
+          "ADD": "Add",
+          "CANCEL": "Cancel"
+        },
+        "SELECTION": {
+          "HEADING": {
+            "SELECTED": "Your Selection",
+            "NONE": "None Selected"
+          },
+          "TITLE": "Title: ",
+          "DATE": "Date: ",
+          "IMDB_LINK": "(View on IMDB)",
+          "PLOT": "Plot: "
+        }
+      }
     },
     "WIDGET_2": {
       "TITLE": "Series List",
@@ -16,27 +37,6 @@
           "SEASON": "Season",
           "EPISODE": "Episode",
           "LINK": "Watch"
-        }
-      },
-      "TYPEAHEAD": {
-        "MATCH": {
-          "YEAR": "Year: "
-        },
-        "LOADING": "Loading...",
-        "NO_RESULTS": "NO results found.",
-        "BUTTONS": {
-          "ADD": "Add",
-          "CANCEL": "Cancel"
-        },
-        "SELECTION": {
-          "HEADING": {
-            "SELECTED": "Your Selection",
-            "NONE": "None Selected"
-          },
-          "TITLE": "Title: ",
-          "YEAR": "Year: ",
-          "IMDB_LINK": "(View on IMDB)",
-          "PLOT": "Plot: "
         }
       }
     }

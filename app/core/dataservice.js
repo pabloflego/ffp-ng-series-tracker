@@ -5,10 +5,11 @@
         .module('app.core')
         .factory('dataservice', dataservice);
 
-    dataservice.$inject = ['$q', 'exception', 'logger', 'mlab', 'omdb'];
-    function dataservice($q, exception, logger, mlab, omdb) {
-        var isPrimed = false;
-        var primePromise;
+    dataservice.$inject = ['lodash', '$q', 'exception', 'logger', 'config', 'localStorageService', 'mlab', 'tmdb'];
+    function dataservice(_, $q, exception, logger, config, localStorageService, mlab, imdb) {
+        var isPrimed = false,
+            primePromise,
+            options = localStorageService.get('options');
 
         return {
             ready: ready,
@@ -16,9 +17,12 @@
                 all: mlabAll,
                 save: mlabSave
             },
-            omdb: {
-                search: omdbSearch,
-                one: omdbOne
+            imdb: {
+                search: search,
+                one: one
+            },
+            utils: {
+                getImagePath: getImagePath
             }
         };
 
@@ -53,12 +57,32 @@
             return mlab.save(documents);
         }
 
-        function omdbSearch(term) {
-            return omdb.search(term);
+        function search(term) {
+            return imdb.search(term);
         }
 
-        function omdbOne(imdbId) {
-            return omdb.one(imdbId);
+        function one(imdbId) {
+            return imdb.one(imdbId);
+        }
+
+        /**
+         * Buils an img path
+         * @param size
+         * @param posterPath
+         * @param useDefault - If true will return default poster
+         * @returns {*}
+         */
+        function getImagePath(size, posterPath) {
+            var path = config.defaultPoster;
+            if (!!posterPath) {
+                path = _.template(config.tmdb.images.basePath)({
+                    size: size,
+                    posterPath: posterPath,
+                    apiKey: options.tmdb.apiKey
+                });
+            }
+
+            return path;
         }
 
     }
