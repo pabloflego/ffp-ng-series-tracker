@@ -35,12 +35,13 @@
                                     <div class="selection-info pull-left col-md-8">
                                         <h3>{{ vm.ta.model.omdb.Title }}</h3>
                                         <div>
-                                            <translate>DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.YEAR</translate>
+                                            <b><i translate>DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.YEAR</i></b>
                                             {{ vm.ta.model.omdb.Year }}
                                         </div>
                                         <div>
-                                            <translate>DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.PLOT</translate>
-                                            {{ vm.ta.model.omdb.Plot }}
+                                            <b><i translate>DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.PLOT</i></b>
+                                            <span class="text-muted">{{ vm.ta.model.omdb.Plot }}</span>
+                                            <br>
                                             <a data-ng-href="{{ vm.ta.model.getIMDBLink() }}" target="_blank" translate>
                                                 DASHBOARD.WIDGET_2.TYPEAHEAD.SELECTION.IMDB_LINK
                                             </a>
