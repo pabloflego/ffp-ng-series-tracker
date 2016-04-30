@@ -15,7 +15,7 @@
                                        uib-typeahead="item.name for item in vm.searchMatcher($viewValue)"
                                        typeahead-no-results="noResults"
                                        typeahead-min-length="2"
-                                       typeahead-template-url="app/core/partials/_typeahead-list-match.html"
+                                       typeahead-template-url="app/modules/dashboard/partials/_dashboard.ta-list-match.html"
                                        typeahead-on-select="vm.listSelectCallback($item)"
                                        class="form-control">
                                 <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
