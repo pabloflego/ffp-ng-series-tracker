@@ -1,52 +1,36 @@
 <section id="options-view" class="mainbar">
     <section class="matter">
         <div class="container">
+
+            <flash-message></flash-message>
+
             <div class="row">
                 <div class="col-md-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" data-ng-repeat="(key, option) in vm.options">
                         <!-- Default panel contents -->
-                        <div class="panel-heading" ><h3 translate>OPTIONS.SECTIONS.OMDB.HEADING</h3></div>
+                        <div class="panel-heading" ><h3 translate>{{ vm.getTranslationKey(key, 'HEADING') }}</h3></div>
                         <div class="panel-body">
-                            <p translate>OPTIONS.SECTIONS.OMDB.COPY</p>
+                            <p translate>{{ vm.getTranslationKey(key, 'COPY') }}</p>
                         </div>
-
                         <!-- Table -->
                         <table class="table table-bordered config-form">
                             <tbody>
-                                <tr>
-                                    <td translate>OPTIONS.SECTIONS.OMDB.BASE_PATH</td>
+                                <tr data-ng-repeat="(field, value) in option">
+                                    <td translate>{{ vm.getTranslationKey(key, 'FIELDS.' + $index) }}</td>
                                     <td>
-                                        <input type="text" class="form-control" data-ng-model="vm.omdb.basePath"
-                                               title="{{ OPTIONS.SECTIONS.OMDB.BASE_PATH | translate }}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td translate>OPTIONS.SECTIONS.OMDB.API_KEY</td>
-                                    <td>
-                                        <input type="text" class="form-control" data-ng-model="vm.omdb.apiKey"
-                                               title="{{ OPTIONS.SECTIONS.OMDB.API_KEY | translate }}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td translate>OPTIONS.SECTIONS.OMDB.COLLECTION</td>
-                                    <td>
-                                        <input type="text" class="form-control" data-ng-model="vm.omdb.collection"
-                                               title="{{ OPTIONS.SECTIONS.OMDB.COLLECTION | translate }}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-lg active save-button"
-                                            data-ng-click="vm.save(vm.omdb)" translate>
-                                            OPTIONS.SAVE_BUTTON</button>
+                                        <input type="text" class="form-control"
+                                               data-ng-model="vm.options[key][field]"
+                                               title="{{ vm.getTranslationKey(key, 'FIELDS.' + $index) | translate }}">
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-
                     </div>
+
+                    <button type="button" class="btn btn-primary btn-lg active save-button"
+                            data-ng-click="vm.save()" translate>OPTIONS.SAVE_BUTTON</button>
                 </div>
             </div>
+        </div>
     </section>
 </section>

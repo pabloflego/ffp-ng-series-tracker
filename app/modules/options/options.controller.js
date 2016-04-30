@@ -5,7 +5,7 @@
         .module('app.options')
         .controller('Options', Options);
 
-    Options.$inject = ['lodash', '$q', 'logger', 'localStorageService'];
+    Options.$inject = ['lodash', '$q', 'logger', 'localStorageService', '$window', '$timeout', 'Flash'];
     /**
      * Options Controller Constructor
      * @param _
@@ -14,16 +14,15 @@
      * @param localStorageService
      * @constructor
      */
-    function Options(_, $q, logger, localStorageService) {
+    function Options(_, $q, logger, localStorageService, $window, $timeout, flash) {
 
         /*jshint validthis: true */
         var vm = this;
-        vm.omdb = {
-            basePath: '',
-            apiKey: '',
-            collection: ''
-        };
+        vm.options = {};
+
+
         vm.save = saveOptions;
+        vm.getTranslationKey = getTranslationKey;
 
         init();
 
@@ -43,21 +42,31 @@
          * @returns {Object} Promise
          */
         function getOptions() {
-            return $q.all(
-                $q.when(vm.omdb.basePath = localStorageService.get('basePath')),
-                $q.when(vm.omdb.apiKey = localStorageService.get('apiKey')),
-                $q.when(vm.omdb.collection = localStorageService.get('collection'))
-            );
+            return $q.when(vm.options = localStorageService.get('options'));
         }
 
         /**
          * Persist Options through localStorage
          */
-        function saveOptions(optionSet) {
-            _.each(optionSet, function(value, key) {
-                localStorageService.set(key, value);
-            });
+        function saveOptions() {
+            localStorageService.set('options', vm.options);
             logger.info('Options successfully saved');
+
+            flash.create('success', 'Options successfully saved');
+
+            $timeout(function() {
+                $window.location.reload();
+            }, 1000);
+        }
+
+        /**
+         * Build dynamically the translation key
+         * @param id
+         * @param suffix
+         * @returns {string}
+         */
+        function getTranslationKey(id, suffix) {
+            return 'OPTIONS.SECTIONS.' + id.toUpperCase() + '.' + suffix;
         }
     }
 })();

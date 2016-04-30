@@ -5,18 +5,20 @@
         .module('app.core')
         .factory('mlab', MLabDataStore);
 
-    MLabDataStore.$inject = ['$http', 'localStorageService'];
+    MLabDataStore.$inject = ['$http', 'localStorageService', 'config'];
     /**
      * Constructor for mLab Mongo DataStore
      * @param $http
      * @param localStorageService
+     * @param config
      * @returns {{all: all, save: save}}
      * @constructor
      */
-    function MLabDataStore($http, localStorageService) {
-        var basePath    = localStorageService.get('basePath'),
-            apiKey      = localStorageService.get('apiKey'),
-            collection  = localStorageService.get('collection');
+    function MLabDataStore($http, localStorageService, config) {
+        var options     = localStorageService.get('options'),
+            apiKey      = options.mlab.apiKey,
+            collection  = options.mlab.collection,
+            basePath    = config.mlab.baseURI + 'databases/' + options.mlab.database + '/';
 
         return {
             all: all,

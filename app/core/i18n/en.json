@@ -43,12 +43,15 @@
   },
   "OPTIONS": {
     "SECTIONS": {
-      "OMDB": {
-        "HEADING": "OMDB API",
+      "MLAB": {
+        "HEADING": "mLab Database Config",
         "COPY": "Define mLab Mongo database configurations.",
-        "BASE_PATH": "Base Path",
-        "API_KEY": "API Key",
-        "COLLECTION": "Collection"
+        "FIELDS": ["API Key", "Database", "Collection"]
+      },
+      "TMDB": {
+        "HEADING": "The Movie Database Config",
+        "COPY": "Define TMDB API configurations.",
+        "FIELDS": ["API Key"]
       }
     },
     "SAVE_BUTTON": "Save Options"
