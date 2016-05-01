@@ -18,9 +18,9 @@
                     templateUrl: 'app/modules/options/options.html',
                     controller: 'Options',
                     controllerAs: 'vm',
-                    title: 'options',
+                    title: 'Options',
                     settings: {
-                        nav: 1,
+                        nav: 2,
                         content: '<i class="fa fa-cogs"></i> Options'
                     }
                 }

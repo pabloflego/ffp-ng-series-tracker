@@ -24,6 +24,15 @@
     }
 
     routehelper.$inject = ['$location', '$rootScope', '$route', 'logger', 'routehelperConfig'];
+    /**
+     * Route Helper factory
+     * @param $location
+     * @param $rootScope
+     * @param $route
+     * @param logger
+     * @param routehelperConfig
+     * @returns {{configureRoutes: configureRoutes, getRoutes: getRoutes, routeCounts: {errors: number, changes: number}}}
+     */
     function routehelper($location, $rootScope, $route, logger, routehelperConfig) {
         var handlingRouteChangeError = false;
         var routeCounts = {
@@ -96,8 +105,8 @@
                 function(event, current, previous) {
                     routeCounts.changes++;
                     handlingRouteChangeError = false;
-                    var title = routehelperConfig.config.docTitle + ' ' + (current.title || '');
-                    $rootScope.title = title; // data bind to <title>
+                    // data bind to <title>
+                    $rootScope.title = (current.title || '') + ' | ' + routehelperConfig.config.docTitle;
                 }
             );
         }
