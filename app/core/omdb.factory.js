@@ -15,7 +15,7 @@
 
         function search(term) {
 
-            return $http.get(config.omdb.basePath, {
+            return $http.get(config.omdb.baseURI, {
                 'params': {
                     's': term,
                     'r': 'json',
@@ -28,12 +28,12 @@
 
         function one(imdbId) {
 
-            return $http.get(config.omdb.basePath, {
+            return $http.get(config.omdb.baseURI, {
                 'params': {
                     'i': imdbId,
                     'r': 'json',
                     'type': 'series',
-                    'tomatoes': true
+                    'tomatoes': false
                 },
                 'headers': {'Content-Type': 'application/json'}
             });
