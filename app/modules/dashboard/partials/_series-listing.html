@@ -1,0 +1,36 @@
+<div class="widget wblue">
+    <h2 data-cc-widget-header title="{{ 'DASHBOARD.WIDGET_2.TITLE' | translate }}"
+        allow-collapse="true"></h2>
+    <div class="widget-content text-center text-info">
+        <table id="series" class="table table-striped">
+            <thead>
+            <tr>
+                <th data-ng-repeat="header in vm.table.headers" translate>{{ header }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-series-id="" data-ng-repeat="s in vm.table.series">
+                <td>{{ $index + 1 }}</td>
+                <td>
+                    <img ng-src="{{ vm.getImagePath('w92', s.imdb.poster_path)}}"
+                         class="poster-thumbnail-64">
+                </td>
+                <td>{{ s.imdb.name }}</td>
+                <td>
+                    <a href="#" class="glyphicon glyphicon-minus-sign season-decrement"></a>
+                    {{ s.season }}
+                    <a href="#" class="glyphicon glyphicon-plus-sign season-increment"></a>
+                </td>
+                <td>{{ s.episode }}</td>
+                <td>
+                    <a data-ng-href="{{ s.link }}" class="glyphicon glyphicon-play"
+                       target="_blank"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="widget-foot">
+        <div class="clearfix"></div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="widget wlightblue">
+    <h2 data-cc-widget-header title="{{ 'DASHBOARD.WIDGET_1.TITLE' | translate }}"
+        allow-collapse="true"></h2>
+
+    <div class="widget-content text-center text-info clearfix">
+        <div id="search-box" class="col-md-6">
+            <input type="text" ng-model="vm.ta.selected"
+                   placeholder="{{ 'DASHBOARD.WIDGET_1.TYPEAHEAD.PLACEHOLDER' | translate }}"
+                   uib-typeahead="item.name for item in vm.searchMatcher($viewValue)"
+                   typeahead-no-results="noResults"
+                   typeahead-min-length="2"
+                   typeahead-template-url="app/modules/dashboard/partials/_ta-list-match.html"
+                   typeahead-on-select="vm.listSelectCallback($item)"
+                   class="form-control">
+            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+            <div ng-show="noResults">
+                <i class="glyphicon glyphicon-remove"></i>
+                <translate>DASHBOARD.WIDGET_1.TYPEAHEAD.NO_RESULTS</translate>
+            </div>
+        </div>
+
+        <div id="selection-box" class="col-md-6">
+            <translate data-ng-if="vm.ta.model.imdb.name">
+                DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.HEADING.SELECTED
+            </translate>
+            <translate data-ng-if="!vm.ta.model.imdb.name">
+                DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.HEADING.NONE
+            </translate>
+            <div data-ng-if="vm.ta.model.imdb.name" class="text-left clearfix">
+                <img data-ng-src="{{ vm.getImagePath('w92', vm.ta.model.imdb.poster_path) }}"
+                     alt="{{ vm.ta.model.imdb.name }}"
+                     class="poster-thumbnail-128 pull-left col-md-4">
+                <div class="selection-info pull-left col-md-8">
+                    <h3>{{ vm.ta.model.imdb.name }}</h3>
+                    <div>
+                        <b><i translate>DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.DATE</i></b>
+                        {{ vm.ta.model.imdb.first_air_date }}
+                    </div>
+                    <div>
+                        <b><i translate>DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.PLOT</i></b>
+                        <span class="text-muted">{{ vm.ta.model.imdb.overview }}</span>
+                        <!--<br>-->
+                        <!--<a data-ng-href="{{ vm.ta.model.getIMDBLink() }}" target="_blank" translate>-->
+                        <!--DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.IMDB_LINK-->
+                        <!--</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widget-foot clearfix">
+        <button type="button" class="btn btn-primary btn-lg pull-right col-xs-12 col-lg-3"
+                data-ng-click="vm.addSeries()" data-ng-disabled="!vm.ta.model.imdb.name" translate>
+            DASHBOARD.WIDGET_1.TYPEAHEAD.BUTTONS.ADD
+        </button>
+        <button type="button" class="btn btn-default btn-lg pull-right col-xs-12 col-lg-3"
+                data-ng-click="vm.cancelSelection()" translate>
+            DASHBOARD.WIDGET_1.TYPEAHEAD.BUTTONS.CANCEL
+        </button>
+    </div>
+</div>
