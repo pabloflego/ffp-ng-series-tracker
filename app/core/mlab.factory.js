@@ -17,19 +17,20 @@
     function MLabDataStore($http, localStorageService, config) {
         var options     = localStorageService.get('options'),
             apiKey      = options.mlab.apiKey,
-            collection  = options.mlab.collection,
-            basePath    = config.mlab.baseURI + 'databases/' + options.mlab.database + '/';
+            basePath    = config.mlab.baseURI + 'databases/' + config.mlab.database + '/';
 
         return {
             all: all,
-            save: save
+            save: save,
+            getConfig: getConfig
         };
 
         /**
          * @description Retrieves all documents
          * @returns {Object} Promise
          */
-        function all() {
+        function all(collection) {
+            collection = collection || config.mlab.collections.listing;
             var path = basePath + 'collections/' + collection;
             return $http.get(path, {
                 'params': {'apiKey': apiKey},
@@ -42,12 +43,21 @@
          * @param {Array} documents
          * @returns {Object} Promise
          */
-        function save(documents) {
+        function save(documents, collection) {
+            collection = collection || config.mlab.collections.listing;
             var path = basePath + 'collections/' + collection;
             return $http.post(path, JSON.stringify(documents), {
                 'params': {'apiKey': apiKey},
                 'headers': {'Content-Type': 'application/json'}
             });
+        }
+
+        /**
+         * Fetch configs from server
+         * @returns {Object}
+         */
+        function getConfig() {
+            return all(config.mlab.collections.config);
         }
 
     }

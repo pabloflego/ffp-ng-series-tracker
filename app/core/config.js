@@ -6,22 +6,22 @@
         appErrorPrefix: '[FFP Error] ', //Configure the exceptionHandler decorator
         appTitle: 'FFP Series Tracker',
         version: '1.0.0',
-        imdbUrl: 'http://www.imdb.com/title/',
-        mlab: { baseURI: 'https://api.mlab.com/api/1/' },
+        mlab: {
+            baseURI: 'https://api.mlab.com/api/1/',
+            database: 'ffp',
+            collections: {
+                config: 'series-tracker.config',
+                listing: 'series-tracker.listing'
+            }
+        },
+        imdb: {
+            siteURL: 'http://www.imdb.com/title/'
+        },
         omdb: { baseURI: 'http://www.omdbapi.com/' },
         tmdb: {
             baseURI: 'https://api.themoviedb.org/3/',
             images: {
-                basePath: 'http://image.tmdb.org/t/p/<%= size %><%= posterPath %>?api_key=<%= apiKey %>',
-                sizes: {
-                    '92' :'w92',
-                    '154': 'w154',
-                    '185': 'w185',
-                    '342': 'w342',
-                    '500': 'w500',
-                    '780': 'w780',
-                    original: "original"
-                }
+                basePath: 'http://image.tmdb.org/t/p/<%= size %><%= posterPath %>?api_key=<%= apiKey %>'
             }
         },
         defaultPoster: 'assets/img/default-poster.png'
@@ -82,12 +82,12 @@
         routehelperConfigProvider.config.$routeProvider = $routeProvider;
         routehelperConfigProvider.config.docTitle = 'FFP Series Tracker: ';
         routehelperConfigProvider.config.resolveAlways = {
-            /* @ngInject */
-            // ready: function(dataservice) {
-            //     return dataservice.ready();
-            // }
-            ready: ['dataservice', function (dataservice) {
-                return dataservice.ready();
+            ready: ['dataservice', 'mlab', 'config', 'lodash', function (dataservice, mlab, config, _) {
+                return dataservice.ready()
+                    .then(mlab.getConfig)
+                    .then(function(response){
+                        _.merge(config, response.data[0]);
+                    });
             }]
         };
 
