@@ -59,10 +59,24 @@
   #selection-box {
     border: 1px solid $light-gray;
     min-height: 34px;
-    padding-bottom: 10px;
+
+    img {
+      margin-right: 10px;
+    }
+
+    .selection-box-head {
+      vertical-align: middle;
+    }
 
     .selection-info {
-      min-height: 128px;
+
+      padding-bottom: 10px;
+
+      .selection-info-title {
+        font-size: 20px;
+        line-height: 30px;
+        color: #777;
+      }
     }
   }
 

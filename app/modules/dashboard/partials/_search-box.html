@@ -21,27 +21,27 @@
         </div>
 
         <div id="selection-box" class="col-md-6">
-            <translate data-ng-if="vm.ta.model.imdb.name">
+            <span class="selection-box-head" data-ng-if="vm.ta.model.imdb.name" translate>
                 DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.HEADING.SELECTED
-            </translate>
-            <translate data-ng-if="!vm.ta.model.imdb.name">
+            </span>
+            <span class="selection-box-head" data-ng-if="!vm.ta.model.imdb.name" translate>
                 DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.HEADING.NONE
-            </translate>
+            </span>
             <div data-ng-if="vm.ta.model.imdb.name" class="text-left clearfix">
                 <img data-ng-src="{{ vm.getImagePath('w92', vm.ta.model.imdb.poster_path) }}"
                      alt="{{ vm.ta.model.imdb.name }}"
                      class="poster-thumbnail-128 pull-left col-md-4">
-                <div class="selection-info pull-left col-md-8">
-                    <h3>{{ vm.ta.model.imdb.name }}</h3>
-                    <div>
+                <p class="selection-info">
+                    <span class="selection-info-title">{{ vm.ta.model.imdb.name }}</span><br>
+                    <span>
                         <b><i translate>DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.DATE</i></b>
-                        {{ vm.ta.model.imdb.first_air_date }}
-                    </div>
-                    <div>
+                        {{ vm.ta.model.imdb.first_air_date || ('GLOBAL.NA' | translate) }}
+                    </span><br>
+                    <span>
                         <b><i translate>DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.PLOT</i></b>
-                        <span class="text-muted">{{ vm.ta.model.imdb.overview }}</span>
-                    </div>
-                </div>
+                        <span class="text-muted">{{ vm.ta.model.imdb.overview || ('GLOBAL.NA' | translate) }}</span>
+                    </span>
+                </p>
             </div>
         </div>
     </div>

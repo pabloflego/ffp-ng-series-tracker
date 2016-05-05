@@ -1,6 +1,7 @@
 {
   "GLOBAL": {
-    "APP_NAME": "FFP Series Tracker"
+    "APP_NAME": "FFP Series Tracker",
+    "NA": "N/A"
   },
   "DASHBOARD": {
     "WIDGET_1": {
@@ -10,7 +11,7 @@
           "DATE": "Date: "
         },
         "NO_RESULTS": "NO results found.",
-        "PLACEHOLDER": "Search",
+        "PLACEHOLDER": "Search...",
         "BUTTONS": {
           "ADD": "Add",
           "CANCEL": "Cancel"
