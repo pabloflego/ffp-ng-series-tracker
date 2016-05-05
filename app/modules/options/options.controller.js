@@ -42,9 +42,7 @@
          */
         function init() {
             var promises = [getOptions()];
-            return $q.all(promises).then(function() {
-                logger.info('Activated Options View');
-            });
+            return $q.all(promises);
         }
 
         /**

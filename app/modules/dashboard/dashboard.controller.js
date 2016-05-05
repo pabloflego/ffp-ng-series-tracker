@@ -78,9 +78,7 @@
 
             promises = [_getSeries()];
 
-            return $q.all(promises).then(function() {
-                logger.info('Activated Dashboard View');
-            });
+            return $q.all(promises);
         }
 
         /**

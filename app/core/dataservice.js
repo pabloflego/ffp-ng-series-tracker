@@ -37,7 +37,6 @@
 
             function success() {
                 isPrimed = true;
-                logger.info('Primed data');
             }
         }
 
