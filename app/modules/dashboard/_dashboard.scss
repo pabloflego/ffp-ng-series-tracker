@@ -29,6 +29,14 @@
         font-style: italic;
       }
     }
+
+    i {
+      &.ta-loading {
+        position: absolute;
+        right: 25px;
+        top: 10px;
+      }
+    }
   }
 
   #selection-box {

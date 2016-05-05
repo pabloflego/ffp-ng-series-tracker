@@ -28,7 +28,8 @@
                     'language': locale,
                     'page': 1
                 },
-                'headers': {'Content-Type': 'application/json'}
+                'headers': {'Content-Type': 'application/json'},
+                'hideOverlay': true // Avoid showing main loading overlay
             });
         }
 

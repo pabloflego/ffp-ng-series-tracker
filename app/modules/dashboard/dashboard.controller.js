@@ -153,14 +153,10 @@
          */
         function _resetTypeahead() {
             vm.ta = {
-                model: Object.create(modelPrototype),
-                selected: undefined
+                isLoading: false, // Whether to show or not loading icon
+                selected: undefined, // selected item text
+                model: Object.create(modelPrototype) // Selected item model
             };
-
-            // vm.ta.model.populate(
-            //     {imdb:{Title: "Vikings asdasdasdasd", Year: "2013–", imdbID: "tt2306299", Type: "series", Poster: "http://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg"}}
-            // );
-            // vm.ta.selected = "Vikings";
         }
     }
 })();

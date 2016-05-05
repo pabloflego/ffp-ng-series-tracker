@@ -11,8 +11,9 @@
                    typeahead-min-length="2"
                    typeahead-template-url="app/modules/dashboard/partials/_ta-list-match.html"
                    typeahead-on-select="vm.listSelectCallback($item)"
+                   typeahead-loading="vm.ta.isLoading"
                    class="form-control">
-            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+            <i ng-show="vm.ta.isLoading" class="ta-loading glyphicon glyphicon-refresh gly-spin"></i>
             <div ng-show="noResults">
                 <i class="glyphicon glyphicon-remove"></i>
                 <translate>DASHBOARD.WIDGET_1.TYPEAHEAD.NO_RESULTS</translate>
@@ -39,10 +40,6 @@
                     <div>
                         <b><i translate>DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.PLOT</i></b>
                         <span class="text-muted">{{ vm.ta.model.imdb.overview }}</span>
-                        <!--<br>-->
-                        <!--<a data-ng-href="{{ vm.ta.model.getIMDBLink() }}" target="_blank" translate>-->
-                        <!--DASHBOARD.WIDGET_1.TYPEAHEAD.SELECTION.IMDB_LINK-->
-                        <!--</a>-->
                     </div>
                 </div>
             </div>

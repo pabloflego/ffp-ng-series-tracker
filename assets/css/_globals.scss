@@ -623,3 +623,32 @@ a {
 }
 
 /*#endregion */
+
+/*#region Icon animations */
+.gly-spin {
+  @include animation('spin 2s infinite linear');
+}
+
+@include keyframes(spin, transform, rotate(0deg), transform, rotate(359deg));
+
+
+.gly-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.gly-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.gly-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.gly-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.gly-flip-vertical {
+  transform: scale(1, -1);
+}
+/*#endregion */

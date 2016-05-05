@@ -1,5 +1,23 @@
 $light-gray: #ddd;
 $disabled-gray : #808080;
-@mixin border-gray($important) {
-  border: 1px solid $light-gray $important;
+
+@mixin animation($animate...) {
+  $max: length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+
+    @if $i < $max {
+      $animations: #{$animations + ", "};
+    }
+  }
+  animation: $animations;
+}
+
+@mixin keyframes($animationName, $prop0, $val0, $prop100, $val100) {
+    @keyframes #{$animationName} {
+      0% { #{$prop0}: #{$val0}; }
+      100% { #{$prop100}: #{$val100}; }
+    }
 }
