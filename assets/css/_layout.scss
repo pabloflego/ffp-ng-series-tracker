@@ -66,10 +66,10 @@
 
     > a {
       color: #555;
-      line-height: 23px !important;
+      line-height: 23px;
 
       &:hover {
-        background: #f9f9f9 !important;
+        background: #f9f9f9;
         filter: none;
         color: #888;
       }

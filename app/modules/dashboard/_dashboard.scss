@@ -18,15 +18,32 @@
       overflow: hidden;
       overflow-y: scroll;
       height: 528px;
-      padding-right: 15px;
-    }
 
-    a.ta-match {
-      .ta-info {
-        display: inline-block;
-      }
-      .ta-year {
-        font-style: italic;
+      li {
+
+        &.active {
+          .ta-info {
+            color: #0f0f0f;
+            & > h3 {
+              @extend .ta-info;
+            }
+          }
+        }
+
+        a.ta-match {
+
+          &.active, &:hover {
+            background-color: #337ab7 !important;
+          }
+
+          .ta-info {
+            display: inline-block;
+          }
+          .ta-year {
+            font-style: italic;
+          }
+        }
+
       }
     }
 
